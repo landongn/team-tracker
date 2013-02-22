@@ -19,7 +19,7 @@ module.exports = function( grunt ) {
     coffee: {
       compile: {
         files: {
-          'temp/scripts/*.js': 'app/scripts/**/*.coffee' 
+          'temp/scripts/*.js': 'app/scripts/**/*.coffee'
         },
         options: {
           basePath: 'app/scripts'
@@ -111,7 +111,7 @@ module.exports = function( grunt ) {
     // the staging directory used during the process
     staging: 'temp',
     // final build output
-    output: 'dist',
+    output: 'final',
 
     mkdirs: {
       staging: 'app/'

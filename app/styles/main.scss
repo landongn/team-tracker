@@ -36,40 +36,134 @@ $ease-out-circ:     cubic-bezier(0.075, 0.820, 0.165, 1.000) !default;
 $ease-in-out-circ:  cubic-bezier(0.785, 0.135, 0.150, 0.860) !default;
 $snap:				cubic-bezier(0,1,.5,1) !default;
 
+
+
+$designcolor: #b3e838;
+$uxcolor: #299aa8;
+$fecolor: #b237e8;
+$becolor: #e7bf39;
+$launchcolor: #0c970a;
+
 * {
 	@include box-sizing(border-box);
 	font-family:"Helvetica Neue";
+	letter-spacing:1.5px;
 }
 
+ul, ol {
+	margin:0;
+}
 body {
 	background: url("../images/bgTile.jpg");
 	color:#606060;
-	margin:20px;
+	margin:10px 20px;
 }
 
 #main {
 	position:relative;
-	top:50px;
+	top:20px;
 	#chart {
-		top:100px;
+		top:140px;
 		position:relative;
 		width:5000px;
-		height:1000px;
+		height:860px;
 		.chart-column {
+			&.closed {
+				@include background-image(linear-gradient(top, rgba(104,19,19,0.15) 0%,rgba(63,34,34,0) 100%));
+			}
+			&.milestone {
+				@include background-image(linear-gradient(top, rgba(255,156,0,0.15) 0%,rgba(255,156,0,0) 100%));
+				&:before {
+					background: url("/images/deliverableDue.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+			&.Launch {
+				@include background-image(linear-gradient(top, rgba(12,151,10,0.15) 0%,rgba(12,151,10,0) 100%));
+				&:before {
+					background: url("/images/launchDay.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+			&.Design {
+				@include background-image(linear-gradient(top, rgba(179,232,56,0.15) 0%,rgba(179,232,56,0) 100%));
+				&:before {
+					background: url("/images/deliverableDue.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+
+			&.Frontend {
+				@include background-image(linear-gradient(top, rgba(178,55,232,0.15) 0%,rgba(178,55,232,0) 100%));
+				&:before {
+					background: url("/images/deliverableDue.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+
+			&.Backend {
+				@include background-image(linear-gradient(top, rgba(231,191,57,0.15) 0%,rgba(231,191,57,0) 100%));
+				&:before {
+					background: url("/images/deliverableDue.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+			&.UX {
+				@include background-image(linear-gradient(top, rgba(41,154,168,0.15) 0%,rgba(41,154,168,0) 100%));
+				&:before {
+					background: url("/images/deliverableDue.png") no-repeat;
+					content: "";
+					position: absolute;
+					top: -23px;
+					height: 16px;
+					margin-left: 16px;
+					width: 17px;
+				}
+			}
+			&.today {
+				@include background-image(linear-gradient(top, rgba(92,249,255,0.15) 0%,rgba(92,249,255,0) 100%));
+			}
 			.date {
 				font-family:"Helvetica Neue";
-				font-size:14px;
+				font-size:11px;
 				position:relative;
-				top:-20px;
+				color:#454545;
+				top:0px;
 				text-align:center;
 				font-variant: small-caps;
 			}
 			&:first-child {
-				border-left:1px solid #2b2b2b;
+				border-left:1px solid rgba(94, 94, 94, 0.26);
 			}
+			color:#A7A7A7;
 			width:55px;
 			height:100%;
-			border-right:1px solid #2b2b2b;
+			border-right:1px solid rgba(94, 94, 94, 0.26);
 			border-top: none;
 			border-bottom:none;
 			display:inline-block;
@@ -77,12 +171,22 @@ body {
 	}
 }
 
+#months {
+	.month {
+		position:absolute;
+		font-size:4em;
+		font-weight:bold;
+		text-transform: uppercase;
+		bottom:-116px;
+	}
+}
+
 #gui {
-	height:150px;
+	height:65px;
 	display:block;
 	width:100%;
 	color: white;
-	position:relative;
+	position:fixed;
 	@include transition(all 150ms ease-out);
 	nav {
 		ul {
@@ -131,35 +235,78 @@ body {
 
 
 #statline {
-	position: relative;
-	top: 40px;
+	position: fixed;
+	top: 115px;
+	width:100%;
 	.statline {
 		li {
 			display:inline;
 			font-size:20px;
 			font-family:"Helvetica Neue";
 			font-weight:bold;
+			padding-left:5%;
+			&:first-child{
+				padding-left:1%;
+			}
 			list-style-type:none;
+			span {
+				&.Design_count {
+					color:$designcolor;
+				}
+				&.UX_count {
+					color:$uxcolor;
+				}
+				&.Frontend_count {
+					color:$fecolor;
+				}
+				&.Backend_count {
+					color:$becolor;
+				}
+				&.Launch_count {
+					color:$launchcolor;
+				}
+			}
 		}
 	}
 }
+
+
+
 
 .project {
 	@include transition(all 550ms ease-in-out);
 	h3 {
 		font-size:20px;
 		font-weight:normal;
-		letter-spacing:0px;
+		letter-spacing:1.5px;
+		margin-left:1em;
+		margin-top:0;
+		line-height:35px;
+	}
+	i.type {
+		&.Web {
+			background: url("/images/AoF.png") no-repeat;
+			width: 18px;
+			height: 18px;
+			display: inline-block;
+			margin-left: 1.5em;
+			position: relative;
+			bottom: 10px;
+			&:after {
+				content: "Websites & Applications";
+				display:inline-block;
+				width:200px;
+				color:#B6B67D;
+				margin-left:25px;
+				font-size:0.85em;
+			}
+		}
 	}
 	position:absolute;
-	height:100px;
-	border: 2px solid #161616;
-	@include box-shadow(0px 0px 0px 2px #161616);
-	background-color: #bfd255; // Old browsers
-	@include background-image(linear-gradient(top, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%));
+	height:70px;
+	@include box-shadow(0px 0px 30px 5px rgba(0,0,0, 0.4));
+@include background-image(linear-gradient(top, rgba(33,40,46,1) 0%,rgba(30,37,43,1) 50%,rgba(21,28,36,1) 51%,rgba(20,27,35,1) 100%));
 	@include border-radius(10px);
-	// top: 0px;
-	// left:0px;
 	color:#fff;
 	font-family:"Helvetica Neue";
 	padding:5px;
@@ -170,7 +317,7 @@ footer {
 	position:fixed;
 	bottom:0;
 	left:0;
-	padding:10px;
+	padding:21px;
 	width:100%;
 	#logo {
 		background-image:url("/images/redLogo.png");
